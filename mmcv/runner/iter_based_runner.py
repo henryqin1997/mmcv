@@ -59,7 +59,6 @@ class IterBasedRunner(BaseRunner):
         self.data_loader = data_loader
         self._epoch = data_loader.epoch
         data_batch = next(data_loader)
-        print(data_batch)
         self.data_batch = data_batch
         self.call_hook('before_train_iter')
         outputs = self.model.train_step(data_batch, self.optimizer, **kwargs)
