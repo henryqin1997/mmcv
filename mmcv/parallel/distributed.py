@@ -59,6 +59,7 @@ class MMDistributedDataParallel(DistributedDataParallel):
 
         if self.device_ids:
             inputs, kwargs = self.scatter(inputs, kwargs, self.device_ids)
+            print('distributed.py train_step() kwargs:',kwargs)
             if len(self.device_ids) == 1:
                 output = self.module.train_step(*inputs[0], **kwargs[0])
             else:
