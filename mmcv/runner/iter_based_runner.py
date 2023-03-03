@@ -61,7 +61,7 @@ class IterBasedRunner(BaseRunner):
         data_batch = next(data_loader)
         self.data_batch = data_batch
         self.call_hook('before_train_iter')
-        print("IterBasedRunner train() kwargs:",kwargs)
+#         print("IterBasedRunner train() kwargs:",kwargs)
         outputs = self.model.train_step(data_batch, self.optimizer, **kwargs)
         if not isinstance(outputs, dict):
             raise TypeError('model.train_step() must return a dict')
@@ -142,7 +142,7 @@ class IterBasedRunner(BaseRunner):
                 for _ in range(iters):
                     if mode == 'train' and self.iter >= self._max_iters:
                         break
-                    print("Iter_based_runner kwargs:", kwargs)
+#                     print("Iter_based_runner kwargs:", kwargs)
                     iter_runner(iter_loaders[i], **kwargs)
 
         time.sleep(1)  # wait for some hooks like loggers to finish
